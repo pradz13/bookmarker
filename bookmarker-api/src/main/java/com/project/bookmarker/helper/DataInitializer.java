@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class DataInitializer implements CommandLineRunner {
 

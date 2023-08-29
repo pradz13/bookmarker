@@ -38,3 +38,7 @@ This property can be used for specifying database specific migration scripts -
 spring.flyway.locations=classpath:/db/migration/{vendor}
 
 H2 console can be viewed in - http://localhost:8080/h2-console
+
+DTO projection can be done like this from repository layer to avoid using mappers -
+@Query("select new com.project.bookmarker.dto.BookmarksDTO(b.id, b.title, b.url, b.createdAt) from Bookmark b")
+Page<BookmarksDTO> findBookmarks(Pageable pageable);

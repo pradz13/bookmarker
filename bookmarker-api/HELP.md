@@ -42,3 +42,8 @@ H2 console can be viewed in - http://localhost:8080/h2-console
 DTO projection can be done like this from repository layer to avoid using mappers -
 @Query("select new com.project.bookmarker.dto.BookmarksDTO(b.id, b.title, b.url, b.createdAt) from Bookmark b")
 Page<BookmarksDTO> findBookmarks(Pageable pageable);
+
+==============================================================================================
+Github actions : build.yml should be placed in .github/workflows folder.
+Secrets need to be created in Github - Dockerhub Username and Password in this case.
+Docker image is created using the Jib plugin.

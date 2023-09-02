@@ -29,4 +29,12 @@ public class BookmarkService {
         Page<BookmarksDTO> bookmarksDtoPage = bookmarkRepository.findBookmarks(pageable);
         return new BookmarkDTO(bookmarksDtoPage);
     }
+
+    @Transactional(readOnly = true)
+    public BookmarkDTO searchBookmarks(Integer page, String query) {
+        int pageNo = page < 1 ? 0 : page - 1;
+        Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "createdAt");
+        Page<BookmarksDTO> bookmarksDtoPage = bookmarkRepository.searchBookmarks(pageable, query);
+        return new BookmarkDTO(bookmarksDtoPage);
+    }
 }

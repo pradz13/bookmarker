@@ -47,3 +47,5 @@ Page<BookmarksDTO> findBookmarks(Pageable pageable);
 Github actions : build.yml should be placed in .github/workflows folder.
 Secrets need to be created in Github - Dockerhub Username and Password in this case.
 Docker image is created using the Jib plugin.
+The docker repository needs to be set as public. Else the job will fail.
+===============================================================================================

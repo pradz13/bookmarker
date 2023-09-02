@@ -1,7 +1,9 @@
 package com.project.bookmarker.service;
 
+import com.project.bookmarker.domain.Bookmark;
 import com.project.bookmarker.dto.BookmarkDTO;
 import com.project.bookmarker.dto.BookmarksDTO;
+import com.project.bookmarker.dto.CreateBookmarkRequest;
 import com.project.bookmarker.dto.mapper.BookmarkMapper;
 import com.project.bookmarker.repository.BookmarkRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.Instant;
 
 @Service
 @Transactional
@@ -36,5 +40,11 @@ public class BookmarkService {
         Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "createdAt");
         Page<BookmarksDTO> bookmarksDtoPage = bookmarkRepository.searchBookmarks(pageable, query);
         return new BookmarkDTO(bookmarksDtoPage);
+    }
+
+    public BookmarksDTO createBookmark(CreateBookmarkRequest request) {
+        Bookmark bookmark = new Bookmark(null, request.getTitle(), request.getUrl(), Instant.now());
+        Bookmark savedBookmark = bookmarkRepository.save(bookmark);
+        return bookmarkMapper.toDTO(savedBookmark);
     }
 }

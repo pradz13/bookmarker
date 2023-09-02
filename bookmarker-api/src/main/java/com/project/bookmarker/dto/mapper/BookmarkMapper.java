@@ -1,6 +1,7 @@
 package com.project.bookmarker.dto.mapper;
 
 import com.project.bookmarker.domain.Bookmark;
+import com.project.bookmarker.dto.BookmarkDTO;
 import com.project.bookmarker.dto.BookmarksDTO;
 import org.springframework.stereotype.Component;
 
@@ -13,5 +14,14 @@ public class BookmarkMapper {
         bookmarksDTO.setUrl(bookmark.getUrl());
         bookmarksDTO.setCreatedAt(bookmark.getCreatedAt());
         return bookmarksDTO;
+    }
+
+    public BookmarksDTO toDTO(Bookmark bookmark) {
+        return new BookmarksDTO(
+                bookmark.getId(),
+                bookmark.getTitle(),
+                bookmark.getUrl(),
+                bookmark.getCreatedAt()
+        );
     }
 }

@@ -49,3 +49,4 @@ Secrets need to be created in Github - Dockerhub Username and Password in this c
 Docker image is created using the Jib plugin.
 The docker repository needs to be set as public. Else the job will fail.
 ===============================================================================================
+problem-spring-web-starter dependency is used for error handling purpose in Spring Boot Rest API.

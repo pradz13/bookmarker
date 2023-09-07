@@ -4,6 +4,6 @@ create table bookmarks (
     id bigint default nextval('bm_id_seq') not null,
     title varchar(255) not null,
     url varchar(255) not null,
-    created_at timestamp(6) with time zone,
+    created_at timestamp,
     primary key (id)
 );
